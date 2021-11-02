@@ -33,8 +33,11 @@ jobs:
         with:
           python-version: '3.6'
 
+      - name: Install Dependencies
+        run: pip install virtualenv --upgrade && make install
+
       - name: Build package
-        run: make install release
+        run: python -m build
 
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
