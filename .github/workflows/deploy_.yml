@@ -26,10 +26,15 @@ jobs:
 #      - name: Build and Push image
 #        run: make docker-build docker-push
 
+      - run: echo $GITHUB_TAG
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+
+      - name: Build package
+        run: make install release
 
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
